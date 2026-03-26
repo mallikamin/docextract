@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: docextract
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+    plan: free

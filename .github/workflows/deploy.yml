@@ -51,28 +51,3 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy to Server via SSH
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            cd /opt/docextract
-
-            # Pull latest image
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-
-            # Stop and remove old container
-            docker-compose down || true
-
-            # Start new container
-            docker-compose up -d
-
-            # Clean up old images
-            docker image prune -af
-
-            echo "Deployment complete. Health check:"
-            sleep 5
-            curl -s http://localhost:8000/health | jq .status
