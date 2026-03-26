@@ -1,0 +1,23 @@
+# Core
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.18
+pydantic-settings==2.7.1
+jinja2==3.1.5
+
+# PDF Processing
+pdf2image==1.17.0
+Pillow==11.1.0
+opencv-python-headless==4.11.0.86
+pytesseract==0.3.13
+
+# LLM
+anthropic==0.49.0
+
+# SSE
+sse-starlette==2.2.1
+
+# Utilities
+python-dateutil==2.9.0
+aiofiles==24.1.0
+python-dotenv==1.0.1
