@@ -49,3 +49,5 @@ htmlcov/
 
 # Claude projects
 .claude/
+DEPLOY_NOW.md
+PUSH_TO_GITHUB.md

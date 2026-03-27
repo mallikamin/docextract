@@ -3,6 +3,7 @@ services:
     name: docextract
     runtime: docker
     dockerfilePath: ./docker/Dockerfile
+    dockerCommand: ./start.sh
     envVars:
       - key: ANTHROPIC_API_KEY
         sync: false

@@ -17,10 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Application code
 COPY backend/ ./backend/
 COPY frontend/ ./frontend/
+COPY start.sh ./
 
 # Runtime directories
-RUN mkdir -p /app/data/jobs
+RUN mkdir -p /app/data/jobs && chmod +x /app/start.sh
 
 EXPOSE 8000
 
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["./start.sh"]
